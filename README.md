@@ -17,7 +17,7 @@ To install:
    It will request root access and install everything
 
 To uninstall:
-1. Open a terminal and run `sudo /opt/shader-ram-uninstall`
+1. Open a terminal and run `sudo /opt/shader-ram/shader-ram-uninstall`
 
 **Notes:**
 - Remember that this script *does* copy stuff to RAM on bootup and back to disk on shutdown. Depending on the size of the shader caches & speed of the hard drives, you might end up with a significant increase to bootup & shutdown times.
