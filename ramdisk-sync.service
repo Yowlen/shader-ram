@@ -1,0 +1,12 @@
+[Unit]
+Before=umount.target
+
+[Service]
+Type=oneshot
+User=root
+ExecStart=/opt/shader-ram/cache-start.sh
+ExecStop=/opt/shader-ram/cache-stop.sh
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
