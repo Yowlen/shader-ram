@@ -11,9 +11,6 @@ then
 else
     shader_temp=/mnt/shader-ram/.shader-config
 
-    # Set up the RAM disk for the current user
-    chown -Rf $u /mnt/shader-ram/
-
     # Populate the global nVidia shader cache
     rsync -ar /home/$u/.nv/ /mnt/shader-ram/.nv/
 
