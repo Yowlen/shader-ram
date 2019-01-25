@@ -12,8 +12,9 @@ else
     shader_temp=/mnt/shader-ram/.shader-config
 
     # Populate the global nVidia shader cache
-    # Comment out this line if you don't use an nVidia GPU.
+    # Comment out these lines if you don't use an nVidia GPU.
     rsync -ar /home/$u/.nv/ /mnt/shader-ram/.nv/
+    export __GL_SHADER_DISK_CACHE_PATH='/mnt/shader-ram'
 
     # Begin Steam library search
     # If you don't use Steam, you'll wanna either comment out

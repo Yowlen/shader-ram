@@ -12,7 +12,7 @@ else
     shader_temp=/mnt/shader-ram/.shader-config
 
     # Back up the nVidia cache
-    # Comment out this line if you don't use an nVidia GPU.
+    # Comment out these lines if you don't use an nVidia GPU.
     rsync -ar /mnt/shader-ram/.nv/ /home/$u/.nv/
     chown -Rf $u /home/$u/.nv/
 
