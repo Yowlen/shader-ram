@@ -13,10 +13,10 @@ and the following distributions:
 To install:
 1. Download this and unzip it somewhere
 2. Open a terminal and `cd` to where you unzipped it
-3. Run `chmod +x ./shader-ram-install && sudo ./shader-ram-install`
+3. Run `chmod +x ./shader-ram-install && ./shader-ram-install` and enter your password when it's asked for
 
 To uninstall:
-1. Open a terminal and run `sudo /opt/shader-ram/shader-ram-uninstall`
+1. Open a terminal and run `/opt/shader-ram/shader-ram-uninstall` and enter your password when it's asked for
 
 **Notes:**
 - Remember that this script *does* copy stuff to RAM on bootup and back to disk on shutdown. Depending on the size of the shader caches & speed of the hard drives, you might end up with a significant increase to bootup & shutdown times.
