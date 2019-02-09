@@ -11,9 +11,12 @@ shader_config=/home/$u/.config/shader-ram
 #
 # Check if config folder exists, and if not, create it
 if [ ! -d '$shader_config' ]
+then
     mkdir $shader_config
 fi
 
+# Begin Steam library detection
+#
 # Find potential search points
 cat /proc/mounts | grep 'ext4\|xfs\|btrfs' | grep -v ' / ' | cut -d ' ' -f2 | sed '/home/d' > $shader_config/partitions.txt
 echo /home/$u >> $shader_config/partitions.txt

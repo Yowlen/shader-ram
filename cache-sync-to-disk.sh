@@ -6,7 +6,7 @@ shader_config=/home/$u/.config/shader-ram
 
 # Start by wrapping everything into a big ol' error catcher
 # in case the RAM disk wasn't mounted.
-if [ ! -d '/mnt/shader-ram' ]
+if [ ! -f '/mnt/shader-ram/.ramdisk' ]
 then
     rm -f /home/$u/steam-shader-ram.log
     echo 'Error: Shader RAM directory does not exist.' >> /home/$u/steam-shader-ram.log
