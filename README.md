@@ -13,10 +13,10 @@ and the following distributions:
 To install:
 1. Download this and unzip it somewhere
 2. Open a terminal and `cd` to where you unzipped it
-3. Run `chmod +x ./shader-ram-install && sudo ./shader-ram-install` and enter your password when it's asked for
+3. Run `chmod +x ./install.sh && sudo ./install.sh` and enter your password when it's asked for
 
 To uninstall:
-1. Open a terminal and run `sudo /opt/shader-ram/shader-ram-uninstall` and enter your password when it's asked for
+1. Open a terminal and run `sudo /opt/shader-ram/uninstall.sh` and enter your password when it's asked for
 
 **Notes:**
 - This doesn't try to figure out which parts are relevant to your installation, so you'll need to manually edit all scripts except for the install & uninstall scripts to only use the relevant parts before installing.

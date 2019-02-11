@@ -2,7 +2,7 @@
 
 # Define some variables
 u=$(who | awk '{print $1}')
-shader-config=/home/$u/.config/shader-ram
+shader_config=/home/$u/.config/shader-ram
 
 # Start by wrapping everything into a big ol' error catcher
 # in case the RAM disk wasn't mounted.
