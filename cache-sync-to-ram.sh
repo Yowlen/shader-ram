@@ -37,6 +37,7 @@ for i in `cat $shader_config/steamlibraries.config`; do
     ln -s /mnt/shader-ram/steam-shader-$d ./shadercache
 done
 
+# Comment out these lines if you don't use an nVidia GPU.
 # Populate the global nVidia shader cache
 rsync -ar /home/$u/.nv/ /mnt/shader-ram/.nv/
 
