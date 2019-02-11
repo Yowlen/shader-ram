@@ -25,5 +25,5 @@ umount /mnt/shader-ram
 rmdir /mnt/shader-ram
 
 # Remove the shader cache files
-rm -R /opt/shader-ram/*
+rm -r /opt/shader-ram/*
 rmdir /opt/shader-ram

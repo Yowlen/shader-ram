@@ -8,7 +8,7 @@ shader_config=/home/$u/.config/shader-ram
 # and if not, make it.
 if [ ! -f '/mnt/shader-ram/.ramdisk' ]
 then
-    mkdir /mnt/shader-ram
+    mkdir -p /mnt/shader-ram
     mount -t tmpfs -o size=2G tmpfs /mnt/shader-ram
     touch /mnt/shader-ram/.ramdisk
 fi
