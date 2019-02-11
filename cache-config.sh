@@ -10,10 +10,7 @@ shader_config=/home/$u/.config/shader-ram
 # "fi" line and the blank line at the end.
 #
 # Check if config folder exists, and if not, create it
-if [ ! -d '$shader_config' ]
-then
-    mkdir $shader_config
-fi
+mkdir -p $shader_config
 
 # Begin Steam library detection
 #
