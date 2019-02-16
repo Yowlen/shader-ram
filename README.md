@@ -3,7 +3,8 @@
 This will install a RAM disk for use with shader caches for increased performance in games. The tradeoff is that it can increase boot times significantly depending on the size of the shader caches and filesystem.
 
 Currently supports the following shader caches:
-- nVidia (Proprietary only)
+- nVidia (Proprietary)
+- Mesa (Open Source AMDGPU/intel/nouveau)
 - Steam
 
 and the following distributions:

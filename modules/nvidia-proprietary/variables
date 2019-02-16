@@ -1,0 +1,37 @@
+# Important Notes:
+#
+# 1. $u is used to signify the user name.
+#    This is used to locate the home folder like so:
+#
+#    /home/$u/some/folder
+#
+#    You must follow that syntax exactly for it to work!
+#
+# 2. The # symbol is used for comments like this.
+#    The scripts will ignore the lines that begin with these symbols,
+#    so you can type whatever you want here.
+
+# Project name
+# Used to determine folder name for module installation and use.
+mod_name=nvidia-proprietary
+
+# This is for any configuration files
+# Do not change this one!
+shader_config=/home/$u/.config/shader-ram/nvidia-proprietary
+
+# This is the location of the folder you want to add to the ramdisk.
+# ONLY PUT THE PATH LEADING UP TO THE FOLDER!
+# DO NOT INCLUDE THE FOLDER ITSELF!
+shader_dir=/home/$u/.nv
+
+# This is the location of the backup folder.
+# IT MUST BE DIFFERENT FROM THE MAIN ONE!
+# It's recommended to use a subfolder located on the same partition
+# as the main one for speed and space reasons.
+shader_backup=/home/$u/.cache/shader-ram/nvidia-proprietary
+
+# Finally, this is for the folder on the ramdisk itself.
+# It's recommended to use a subfolder for your module, plus the
+# name of the folder you're syncing. This helps prevent conflicts
+# in case of duplicate folder names across modules.
+shader_ram=/mnt/shader-ram/nvidia-proprietary

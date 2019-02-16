@@ -15,19 +15,11 @@ do
 done < $script_dir/.variables
 rm $script_dir/.variables
 
-# First, let's check to see if the RAM disk is created,
-# and if not, make it.
-if [ ! -f $shader_test ]
-then
-    mkdir -p $shader_ram && mount -t tmpfs -o size=$ram_size tmpfs $shader_ram && touch $shader_test
-fi
+$script_dir/to-disk.sh
 
-# And now we find and execute each module
-for m in $shader_modules/*
-do
-    if [ -d $m ]
-    then
-        chmod +x $m/*.sh
-        $m/startup.sh
-    fi
+# Restore Steam library links
+for i in `cat $shader_config/steamlibraries.config`; do
+    cd $i
+    rm ./shadercache
+    ln -s ./shadercachelink ./shadercache
 done

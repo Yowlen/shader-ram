@@ -1,29 +1,40 @@
 #!/bin/bash
 
+# Define the stuff from the variables file
+u=$(who | awk '{print $1}')
+script_dir=$(dirname "$0")
+
+sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
+while read line
+do
+    if [ $(echo $line | cut -c1) != "#" ]
+    then
+        line=$(echo "${line/\$u/$u}")
+        declare $line
+    fi
+done < $script_dir/.variables
+
 # Stop the sync service and sync shader cache to the default
 # locations one last time
 systemctl stop ramdisk-sync.service
 
-# Remove the final backup links for the Steam shader caches
-# and restore the folders back the way they should be so that
-# it's like we weren't even here.
-if [ -f $shader_temp/steamlibraries.config ]
-then
-    for i in `cat $shader_temp/steamlibraries.config`; do
-        cd %i
-        rm ./shadercache
-        mv ./shadercachelink ./shadercache
-    done
-fi
+# Perform uninstallation of each module
+for m in $shader_modules/*
+do
+    if [ -d $m ]
+    then
+        if [ -f $m/uninstall.sh ]
+        then
+            chmod +x $m/uninstall.sh
+            $m/uninstall.sh
+        fi
+    fi
+done
 
 # Remove the sync service
 systemctl disable ramdisk-sync.service
 rm /lib/systemd/system/ramdisk-sync.service
 
-# Unmount the RAM disk and clean up the folder
-umount /mnt/shader-ram
-rmdir /mnt/shader-ram
-
 # Remove the shader cache files
-rm -r /opt/shader-ram/*
-rmdir /opt/shader-ram
+rm -rf $shader_modules
+rm -rf /opt/shader-ram

@@ -1,8 +1,19 @@
 #!/bin/bash
 
-# Define some variables
+# Define the stuff from the variables file
 u=$(who | awk '{print $1}')
-shader_config=/home/$u/.config/shader-ram
+script_dir=$(dirname "$0")
+
+sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
+while read line
+do
+    if [ $(echo $line | cut -c1) != "#" ]
+    then
+        line=$(echo "${line/\$u/$u}")
+        declare $line
+    fi
+done < $script_dir/.variables
+rm $script_dir/.variables
 
 # Begin Steam library search
 # If you don't use Steam, you'll wanna either comment out

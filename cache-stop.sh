@@ -1,24 +1,34 @@
 #!/bin/bash
 
-# Define some variables
+# Define the stuff from the variables file
 u=$(who | awk '{print $1}')
-shader_config=/home/$u/.config/shader-ram
+script_dir=$(dirname "$0")
+
+sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
+while read line
+do
+    if [ $(echo $line | cut -c1) != "#" ]
+    then
+        line=$(echo "${line/\$u/$u}")
+        declare $line
+    fi
+done < $script_dir/.variables
+rm $script_dir/.variables
 
 # Start by wrapping everything into a big ol' error catcher
-# in case the RAM disk wasn't mounted.
-if [ ! -f '/mnt/shader-ram/.ramdisk' ]
+# in case the ramdisk wasn't mounted.
+if [ -f $shader_test ]
 then
-    rm -f /home/$u/steam-shader-ram.log
-    echo 'Error: Shader RAM directory does not exist.' >> /home/$u/steam-shader-ram.log
-    echo 'Please ensure your /etc/fstab settings are correct.' >> /home/$u/steam-shader-ram.log
-else
-    # All actual sync stuff has been moved to a separate script.
-    /opt/shader-ram/cache-sync-to-disk.sh
-
-    # Restore Steam library links
-    for i in `cat $shader_config/steamlibraries.config`; do
-        cd $i
-        rm ./shadercache
-        ln -s ./shadercachelink ./shadercache
+    # Find and execute each module
+    for m in $shader_modules/*
+    do
+        if [ -d $m ]
+        then
+            chmod +x $m/*.sh
+            $m/shutdown.sh
+        fi
     done
+
+    # Unmount the ramdisk
+    umount $shader_ram && rmdir $shader_ram
 fi

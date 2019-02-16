@@ -15,19 +15,16 @@ do
 done < $script_dir/.variables
 rm $script_dir/.variables
 
-# First, let's check to see if the RAM disk is created,
-# and if not, make it.
-if [ ! -f $shader_test ]
+# Start by wrapping everything into a big ol' error catcher
+# in case the ramdisk wasn't mounted.
+if [ -f $shader_test ]
 then
-    mkdir -p $shader_ram && mount -t tmpfs -o size=$ram_size tmpfs $shader_ram && touch $shader_test
+    for m in $shader_modules/*
+    do
+        if [ -d $m ]
+        then
+            chmod +x $m/*.sh
+            $m/to-disk.sh
+        fi
+    done
 fi
-
-# And now we find and execute each module
-for m in $shader_modules/*
-do
-    if [ -d $m ]
-    then
-        chmod +x $m/*.sh
-        $m/startup.sh
-    fi
-done
