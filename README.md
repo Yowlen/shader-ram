@@ -11,7 +11,7 @@ and the following distributions:
 - Ubuntu & its derivatives
 - Maybe Debian or other distros, but I make no promises
 
-To install:
+To install or upgrade:
 1. Download this and unzip it somewhere
 2. Open a terminal and `cd` to where you unzipped it
 3. Run `chmod +x ./install.sh && sudo ./install.sh` and enter your password when it's asked for
