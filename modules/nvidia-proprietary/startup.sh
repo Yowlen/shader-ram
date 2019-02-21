@@ -19,5 +19,5 @@ $script_dir/to-ram.sh
 
 # Tell the drivers to use the ramdisk instead of the hard drive.
 # Also do another tweak to keep the drivers from limiting the size.
-export __GL_SHADER_DISK_CACHE_PATH='/mnt/shader-ram/nvidia-proprietary/.nv'
+#export __GL_SHADER_DISK_CACHE_PATH='/mnt/shader-ram/nvidia-proprietary/.nv'
 export __GL_SHADER_DISK_CACHE_SKIP_CLEANUP=1
