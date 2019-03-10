@@ -1,4 +1,3 @@
 shader_modules=/usr/share/shader-ram/modules
 shader_test=/mnt/shader-ram/.ramdisk
 shader_ram=/mnt/shader-ram
-ram_size=2G

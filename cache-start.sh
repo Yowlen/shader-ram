@@ -19,7 +19,8 @@ rm $script_dir/.variables
 # and if not, make it.
 if [ ! -f $shader_test ]
 then
-    mkdir -p $shader_ram && mount -t tmpfs -o size=$ram_size tmpfs $shader_ram && touch $shader_test
+    mkdir -p $shader_ram
+    mount -t tmpfs -o size=2G tmpfs $shader_ram && touch $shader_test
 fi
 
 # And now we find and execute each module
