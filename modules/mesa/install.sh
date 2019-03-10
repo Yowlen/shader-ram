@@ -24,6 +24,15 @@ do
 done < $script_dir/.variables
 rm $script_dir/.variables
 
-# Begin module installation
-mkdir -p $shader_modules/$mod_name
-cp -rf $script_dir/* $shader_modules/$mod_name
+# Detect whether or not this module is necessary,
+# and if so, install it.
+echo "Looking for Mesa drivers."
+if [ -d "/home/$u/.cache/mesa_shader_cache" ]
+then
+    echo "Mesa detected. Installing module."
+    mkdir -p $shader_modules/$mod_name
+    cp -rf $script_dir/* $shader_modules/$mod_name
+else
+    echo "Mesa not detected."
+    echo "Skipping installation."
+fi

@@ -25,5 +25,13 @@ done < $script_dir/.variables
 rm $script_dir/.variables
 
 # Begin module installation
-mkdir -p $shader_modules/$mod_name
-cp -rf $script_dir/* $shader_modules/$mod_name
+echo "Looking for Steam."
+if [ -f "/usr/games/steam" ]
+then
+    echo "Steam detected. Installing module."
+    mkdir -p $shader_modules/$mod_name
+    cp -rf $script_dir/* $shader_modules/$mod_name
+else
+    echo "Steam not detected."
+    echo "Skipping module installation."
+fi

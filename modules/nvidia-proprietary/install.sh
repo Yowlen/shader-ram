@@ -24,6 +24,15 @@ do
 done < $script_dir/.variables
 rm $script_dir/.variables
 
-# Begin module installation
-mkdir -p $shader_modules/$mod_name
-cp -rf $script_dir/* $shader_modules/$mod_name
+# Detect whether or not this module is necessary,
+# and if so, install it.
+echo "Looking for nVidia proprietary drivers."
+if [ -d "/home/$u/.nv" ]
+then
+    echo "nVidia proprietary drivers detected. Installing module."
+    mkdir -p $shader_modules/$mod_name
+    cp -rf $script_dir/* $shader_modules/$mod_name
+else
+    echo "nVidia proprietary drivers not detected."
+    echo "Skipping module installation."
+fi
