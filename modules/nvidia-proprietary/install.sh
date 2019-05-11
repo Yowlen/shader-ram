@@ -33,6 +33,13 @@ then
     mkdir -p $shader_modules/$mod_name
     cp -rf $script_dir/* $shader_modules/$mod_name
 else
-    echo "nVidia proprietary drivers not detected."
-    echo "Skipping module installation."
+    if [ -L "/home/$u/.nv" ]
+    then
+        echo "nVidia proprietary drivers detected. Installing module."
+        mkdir -p $shader_modules/$mod_name
+        cp -rf $script_dir/* $shader_modules/$mod_name
+    else
+        echo "nVidia proprietary drivers not detected."
+        echo "Skipping module installation."
+    fi
 fi

@@ -33,6 +33,13 @@ then
     mkdir -p $shader_modules/$mod_name
     cp -rf $script_dir/* $shader_modules/$mod_name
 else
-    echo "Mesa not detected."
-    echo "Skipping installation."
+    if [ -L "/home/$u/.cache/mesa_shader_cache" ]
+    then
+        echo "Mesa detected. Installing module."
+        mkdir -p $shader_modules/$mod_name
+        cp -rf $script_dir/* $shader_modules/$mod_name
+    else
+        echo "Mesa not detected."
+        echo "Skipping installation."
+    fi
 fi
