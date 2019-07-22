@@ -30,6 +30,6 @@ rm $script_dir/.variables
 # Reset each Steam library
 for i in `cat $shader_config/steamlibraries.config`
 do
-    rm $i/$shader_dir
-    mv $i/$shader_backup $i/$shader_dir
+    rm "$i/$shader_dir"
+    mv "$i/$shader_backup" "$i/$shader_dir"
 done

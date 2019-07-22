@@ -29,8 +29,8 @@ echo "Looking for Steam."
 if [ -f "/usr/games/steam" ]
 then
     echo "Steam detected. Installing module."
-    mkdir -p $shader_modules/$mod_name
-    cp -rf $script_dir/* $shader_modules/$mod_name
+    mkdir -p "$shader_modules/$mod_name"
+    cp -rf "$script_dir/" "$shader_modules"
 else
     echo "Steam not detected."
     echo "Skipping module installation."

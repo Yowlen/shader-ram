@@ -28,5 +28,5 @@ rm $script_dir/.variables
 # Begin module uninstallation
 #
 # Reset the cache folder
-rm $shader_dir
-mv $shader_backup $shader_dir
+rm "$shader_dir"
+mv "$shader_backup" "$shader_dir"

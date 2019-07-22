@@ -37,4 +37,5 @@ rm /lib/systemd/system/ramdisk-sync.service
 
 # Remove the shader cache files
 rm -rf $shader_modules
+rm -rf /etc/shader-ram
 rm -rf /opt/shader-ram

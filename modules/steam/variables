@@ -17,7 +17,7 @@ mod_name=steam
 
 # This is for any configuration files
 # Do not change this one!
-shader_config=/home/$u/.config/shader-ram/steam
+shader_config=/etc/shader-ram/steam
 
 # This is the location of the folder you want to add to the ramdisk.
 shader_dir=shadercache

@@ -19,13 +19,13 @@ rm $script_dir/.variables
 # create it.
 if [ ! -f $shader_config/steamlibraries.config ]
 then
-     $script_dir/steam-config.sh
+     $script_dir/make-config.sh
 fi
 
 # Now back up each Steam library
 for i in `cat $shader_config/steamlibraries.config`; do
     d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
-    mkdir -p $i/$shader_backup
-    rsync -a --delete $shader_ram/$d/ $i/$shader_backup/
-    chown -R $u $i/$shader_backup
+    mkdir -p "$i/$shader_backup"
+    rsync -a --delete "$shader_ram/$d/" "$i/$shader_backup/"
+    chown -R $u "$i/$shader_backup"
 done

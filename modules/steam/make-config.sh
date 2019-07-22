@@ -26,13 +26,14 @@ mkdir -p $shader_config
 # Begin Steam library detection
 #
 # Find potential search points
+rm -f $shader_config/partitions.txt
 cat /proc/mounts | grep 'ext4\|xfs\|btrfs' | grep -v ' / ' | cut -d ' ' -f2 | sed '/home/d' > $shader_config/partitions.txt
 echo /home/$u >> $shader_config/partitions.txt
 
 # Now to do the actual search for all Steam libraries
 # and output them all to a file.
-echo $(find $(sed ':a;N;$!ba;s/\n/ \0/g' $shader_config/partitions.txt) -mindepth 3 -type d -name "*steamapps" ; ) >> $shader_config/steamlibraries.txt
+echo $(find $(sed ':a;N;$!ba;s/\n/ \0/g' $shader_config/partitions.txt) -mindepth 2 -type d -name "*steamapps" ; ) > $shader_config/steamlibraries.txt
 rm $shader_config/partitions.txt
 # Then separate with new lines.
-tr ' \/' '\n\/' < $shader_config/steamlibraries.txt > $shader_config/steamlibraries.config
+cat $shader_config/steamlibraries.txt | sed 's/ \//\n\//g' > $shader_config/steamlibraries.config
 rm $shader_config/steamlibraries.txt
