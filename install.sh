@@ -16,17 +16,30 @@ done < $script_dir/.variables
 
 # Look for an existing installation and if it exists, run the
 # uninstall script for it.
+echo "Looking for previous installations."
 if [ -f /opt/shader-ram/uninstall.sh ]
 then
-    /opt/shader-ram/uninstall.sh
+    echo "Previous installation found. Uninstalling it."
+    # Remove the sync service
+    systemctl disable ramdisk-sync.service
+    rm /lib/systemd/system/ramdisk-sync.service
+
+    # Remove the shader cache files
+    rm -rf $shader_modules
+    rm -rf /etc/shader-ram
+    rm -rf /opt/shader-ram
+else
+    echo "No previous installation found. Moving on."
 fi
 
 # Copy our files to the installation folder
+echo "Installing main scripts."
 mkdir -p /opt/shader-ram
-cp -f ./* /opt/shader-ram >> /dev/null
+cp -f ./* /opt/shader-ram > /dev/null 2>&1
 chmod 755 /opt/shader-ram/*.sh
 
 # Perform installation of each module
+
 for m in $script_dir/modules/*
 do
     if [ -d $m ]

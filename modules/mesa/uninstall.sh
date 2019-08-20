@@ -3,7 +3,7 @@
 # Define the stuff from the variables file
 u=$(who | awk '{print $1}')
 script_dir=$(dirname "$0")
-home_dir=/opt/shader-ram
+home_dir="/opt/shader-ram"
 
 while read line
 do
@@ -12,7 +12,7 @@ do
         line=$(echo "${line/\$u/$u}")
         declare $line
     fi
-done < $home_dir/.variables
+done < $home_dir/variables
 
 sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
 while read line

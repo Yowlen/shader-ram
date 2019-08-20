@@ -12,7 +12,7 @@ do
         line=$(echo "${line/\$u/$u}")
         declare $line
     fi
-done < $home_dir/.variables
+done < $home_dir/variables
 
 sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
 while read line

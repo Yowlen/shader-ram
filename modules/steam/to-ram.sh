@@ -19,9 +19,10 @@ rm $script_dir/.variables
 $script_dir/make-config.sh
 
 # Make our folder on the ramdisk
-mkdir -p $shader_ram
+mkdir -p "$shader_ram"
 
 # Now to take each Steam library and...
+IFS=$'\n'
 for i in `cat $shader_config/steamlibraries.config`
 do
     # 1. Check to see if it's already linked, and if not, make a backup
@@ -42,3 +43,4 @@ do
     rm "$i/$shader_dir"
     ln -s "$shader_ram/$d" "$i/$shader_dir"
 done
+unset $IFS

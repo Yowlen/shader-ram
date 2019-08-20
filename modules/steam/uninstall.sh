@@ -12,7 +12,7 @@ do
         line=$(echo "${line/\$u/$u}")
         declare $line
     fi
-done < $home_dir/.variables
+done < $home_dir/variables
 
 sed '/^\s*$/d' $script_dir/variables > $script_dir/.variables
 while read line
@@ -28,7 +28,8 @@ rm $script_dir/.variables
 # Begin module uninstallation
 #
 # Reset each Steam library
-for i in `cat $shader_config/steamlibraries.config`
+IFS=$'\n'
+for i in `cat "$shader_config/steamlibraries.config"`
 do
     rm "$i/$shader_dir"
     mv "$i/$shader_backup" "$i/$shader_dir"
