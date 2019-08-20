@@ -25,9 +25,11 @@ fi
 # Now back up each Steam library
 IFS=$'\n'
 for i in `cat $shader_config/steamlibraries.config`; do
-    d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
+    #d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
+    d=${i#?}
     mkdir -p "$i/$shader_backup"
     rsync -a --delete "$shader_ram/$d/" "$i/$shader_backup/"
     chown -R $u "$i/$shader_backup"
+    ln -s "$i/$shader_backup" "$i/$shader_dir"
 done
 unset $IFS

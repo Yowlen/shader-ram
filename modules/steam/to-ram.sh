@@ -31,16 +31,18 @@ do
     then
         rsync -a --delete "$i/$shader_dir/" "$i/$shader_backup/"
         chown -R $u "$i/$shader_backup"
-        rm -r "$i/$shader_dir"
+        rm -rf "$i/$shader_dir"
         ln -s "$i/$shader_backup" "$i/$shader_dir"
     fi
 
     # 2. Sync the backup to the RAM disk, then change the link
     #    to the RAM disk
-    d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
+    #d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
+    d=${i#?}
+    mkdir -p "$shader_ram/$d"
     rsync -a --delete "$i/$shader_backup/" "$shader_ram/$d/"
     chown -R $u "$shader_ram/$d"
-    rm "$i/$shader_dir"
+    rm -f "$i/$shader_dir"
     ln -s "$shader_ram/$d" "$i/$shader_dir"
 done
 unset $IFS
