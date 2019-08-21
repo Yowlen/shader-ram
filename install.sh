@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Confirm all games are shut down in order to prevent issues with
-# unmounting the ramdisk.
+# (re)installation.
 echo "Make sure no games are currently running and that"
 echo "Steam isn't running if you're using it,"
 read -p "then press any key to continue or CTRL-C to cancel... " -n1 -s
@@ -26,6 +26,7 @@ echo "Looking for previous installations."
 if [ -f /opt/shader-ram/uninstall.sh ]
 then
     echo "Previous installation found. Uninstalling it."
+    touch /opt/shader-ram/reinstall
     /opt/shader-ram/uninstall.sh
 else
     echo "No previous installation found. Moving on."
