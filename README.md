@@ -5,7 +5,8 @@ This will install a RAM disk for use with shader caches for increased performanc
 Currently supports the following shader caches:
 - nVidia (Proprietary)
 - Mesa (Open Source AMDGPU/intel/nouveau drivers)
-- Steam (Wine3D-based stuff only)
+- Steam
+- DXVK
 
 and the following distributions:
 - Ubuntu-based distros
