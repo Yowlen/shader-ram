@@ -25,14 +25,15 @@ done < $script_dir/.variables
 rm $script_dir/.variables
 
 # Begin module installation
-echo "Looking for Steam."
+echo "Looking for DXVK."
 s=$(whereis steam | tail -c +8)
-if [ -n "$s" ]
+w=$(whereis wine | tail -c +7)
+if [ -n "$s" ] || [ -n "$w" ]
 then
-    echo "Steam detected. Installing module."
+    echo "DXVK detected. Installing module."
     mkdir -p "$shader_modules/$mod_name"
     cp -rf "$script_dir/" "$shader_modules"
 else
-    echo "Steam not detected."
+    echo "DXVK not detected."
     echo "Skipping module installation."
 fi

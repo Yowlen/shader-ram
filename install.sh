@@ -1,5 +1,11 @@
 #!/bin/bash
 
+# Confirm all games are shut down in order to prevent issues with
+# unmounting the ramdisk.
+echo "Make sure no games are currently running and that"
+echo "Steam isn't running if you're using it,"
+read -p "then press any key to continue or CTRL-C to cancel... " -n1 -s
+
 # Define the stuff from the variables file
 u=$(who | awk '{print $1}')
 script_dir=$(dirname "$0")
@@ -20,14 +26,7 @@ echo "Looking for previous installations."
 if [ -f /opt/shader-ram/uninstall.sh ]
 then
     echo "Previous installation found. Uninstalling it."
-    # Remove the sync service
-    systemctl disable ramdisk-sync.service
-    rm /lib/systemd/system/ramdisk-sync.service
-
-    # Remove the shader cache files
-    rm -rf $shader_modules
-    rm -rf /etc/shader-ram
-    rm -rf /opt/shader-ram
+    /opt/shader-ram/uninstall.sh
 else
     echo "No previous installation found. Moving on."
 fi
