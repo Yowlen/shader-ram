@@ -26,6 +26,7 @@ done < $script_dir/.variables
 # Stop the sync service and sync shader cache to the default
 # locations one last time
 systemctl stop ramdisk-sync.service
+sync
 
 # Perform uninstallation of each module
 for m in $shader_modules/*
@@ -34,8 +35,10 @@ do
     then
         if [ -f $m/uninstall.sh ]
         then
-            chmod +x $m/uninstall.sh
-            $m/uninstall.sh
+            mn=$(echo $m | rev | cut -d '/' -f1 | rev)
+            echo "Uninstalling $mn."
+            chmod +x "$m/uninstall.sh"
+            "$m/uninstall.sh"
         fi
     fi
 done
@@ -48,3 +51,4 @@ rm /lib/systemd/system/ramdisk-sync.service
 rm -rf $shader_modules
 rm -rf /etc/shader-ram
 rm -rf /opt/shader-ram
+sync
