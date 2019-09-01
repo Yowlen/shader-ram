@@ -13,25 +13,23 @@
 
 # Project name
 # Used to determine folder name for module installation and use.
-mod_name=nvidia-proprietary
+mod_name=1-mesa
 
 # This is for any configuration files
 # Do not change this one!
-shader_config=/home/$u/.config/shader-ram/nvidia-proprietary
+shader_config=/etc/shader-ram/mesa
 
 # This is the location of the folder you want to add to the ramdisk.
-# ONLY PUT THE PATH LEADING UP TO THE FOLDER!
-# DO NOT INCLUDE THE FOLDER ITSELF!
-shader_dir=/home/$u/.nv
+shader_dir=/home/$u/.cache/mesa_shader_cache
 
 # This is the location of the backup folder.
 # IT MUST BE DIFFERENT FROM THE MAIN ONE!
 # It's recommended to use a subfolder located on the same partition
 # as the main one for speed and space reasons.
-shader_backup=/home/$u/.cache/shader-ram/nvidia-proprietary
+shader_backup=/home/$u/.cache/shader-ram/mesa/mesa_shader_cache
 
 # Finally, this is for the folder on the ramdisk itself.
 # It's recommended to use a subfolder for your module, plus the
 # name of the folder you're syncing. This helps prevent conflicts
 # in case of duplicate folder names across modules.
-shader_ram=/mnt/shader-ram/nvidia-proprietary
+shader_ram=/mnt/shader-ram/mesa/mesa_shader_cache

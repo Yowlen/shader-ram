@@ -7,6 +7,7 @@ then
     echo "Make sure no games are currently running and that"
     echo "Steam isn't running if you're using it,"
     read -p "then press any key to continue or CTRL-C to cancel... " -n1 -s
+    echo ""
 fi
 
 # Define the stuff from the variables file
