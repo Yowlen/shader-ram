@@ -44,7 +44,6 @@ for dxvk_file in `cat $shader_config/dxvkcaches.config`; do
     shader_backup="$shader_folder/ramdisk_backup"
 
     # 2. Restore the file to its original spot and remove the backup
-    echo "Restoring $dxvk_file."
     rm -f "$dxvk_file"
     rsync -a --delete "$shader_backup/$shader_file" "$shader_folder/"
 done
