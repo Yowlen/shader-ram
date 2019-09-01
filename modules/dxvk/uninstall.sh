@@ -56,7 +56,6 @@ done
 for dxvk_file in `cat $shader_config/dxvkcaches.config`
 do
     shader_backup="$shader_folder/ramdisk_backup"
-    echo "Removing $shader_backup."
     rm -rf "$shader_backup"
 done
 unset $IFS
