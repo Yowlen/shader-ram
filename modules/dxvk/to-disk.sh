@@ -31,7 +31,8 @@ for dxvk_file in `cat $shader_config/dxvkcaches.config`; do
     shader_ramfolder="$shader_ram/${shader_folder#?}"
     shader_backup="$shader_folder/ramdisk_backup"
 
-    rsync -a --delete "$shader_ramfolder" "$shader_backup/"
+    # 2. And sync it back to the hard drive
+    rsync -a --delete "$shader_ramfolder/$shader_file" "$shader_backup/"
     chown -R $u "$shader_backup"
     rm -f "$dxvk_file"
     ln -s "$shader_backup/$shader_file" "$dxvk_file"

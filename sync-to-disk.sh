@@ -28,3 +28,4 @@ then
         fi
     done
 fi
+sync
