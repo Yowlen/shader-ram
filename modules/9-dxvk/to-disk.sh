@@ -34,7 +34,5 @@ for dxvk_file in `cat $shader_config/dxvkcaches.config`; do
     # 2. And sync it back to the hard drive
     rsync -a --delete "$shader_ramfolder/$shader_file" "$shader_backup/"
     chown -R $u "$shader_backup"
-    rm -f "$dxvk_file"
-    ln -s "$shader_backup/$shader_file" "$dxvk_file"
 done
 unset $IFS

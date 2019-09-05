@@ -41,7 +41,7 @@ do
     d=${i#?}
     mkdir -p "$shader_ram/$d"
     rsync -a --delete "$i/$shader_backup/" "$shader_ram/$d/"
-    chown -R $u "$shader_ram/$d"
+    chown -R $u "$shader_ram/$d/*"
     rm -f "$i/$shader_dir"
     ln -s "$shader_ram/$d" "$i/$shader_dir"
 done

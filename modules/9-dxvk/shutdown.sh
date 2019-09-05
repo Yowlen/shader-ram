@@ -18,8 +18,10 @@ rm $script_dir/.variables
 $script_dir/to-disk.sh
 
 # Restore Steam library links
-for i in `cat $shader_config/steamlibraries.config`; do
-    cd "$i"
-    rm ./shadercache
-    ln -s ./shadercachelink ./shadercache
+IFS=$'\n'
+for dxvk_file in `cat $shader_config/dxvkcaches.config`; do
+    shader_file="${dxvk_file##*/}"
+    rm -f "$dxvk_file"
+    ln -s "$shader_backup/$shader_file" "$dxvk_file"
 done
+unset $IFS
