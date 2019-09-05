@@ -16,3 +16,6 @@ done < $script_dir/.variables
 rm $script_dir/.variables
 
 $script_dir/to-ram.sh
+
+rm "$shader_dir"
+ln -s "$shader_ram" "$shader_dir"

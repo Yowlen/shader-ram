@@ -30,5 +30,3 @@ fi
 mkdir -p "$shader_ram"
 rsync -a --delete "$shader_backup/" "$shader_ram/"
 chown -R $u "$shader_ram"
-rm "$shader_dir"
-ln -s "$shader_ram" "$shader_dir"

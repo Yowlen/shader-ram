@@ -16,3 +16,6 @@ done < $script_dir/.variables
 rm $script_dir/.variables
 
 $script_dir/to-disk.sh
+
+rm "$shader_dir"
+ln -s "$shader_backup" "$shader_dir"
