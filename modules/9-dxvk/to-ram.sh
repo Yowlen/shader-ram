@@ -47,8 +47,6 @@ do
     #d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
     mkdir -p "$shader_ramfolder"
     rsync -a --delete "$shader_backup/$shader_file" "$shader_ramfolder/"
-    chown -R $u "$shader_ramfolder/*"
-    rm -f "$dxvk_file"
-    ln -s "$shader_ramfolder/$shader_file" "$dxvk_file"
+    chown -R $u "$shader_ramfolder"
 done
 unset $IFS

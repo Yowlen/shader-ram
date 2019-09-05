@@ -16,3 +16,12 @@ done < $script_dir/.variables
 rm $script_dir/.variables
 
 $script_dir/to-ram.sh
+
+IFS=$'\n'
+for i in `cat $shader_config/steamlibraries.config`
+do
+    d=${i#?}
+    rm -f "$i/$shader_dir"
+    ln -s "$shader_ram/$d" "$i/$shader_dir"
+done
+unset $IFS

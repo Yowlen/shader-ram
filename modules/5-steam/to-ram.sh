@@ -29,7 +29,7 @@ do
     #    on the hard drive (for first-time setup of new libraries)
     if [ ! -L $i/$shader_dir ]
     then
-        rsync -a --delete "$i/$shader_dir/" "$i/$shader_backup/"
+        rsync -a --delete "$i/$shader_dir/*" "$i/$shader_backup/"
         chown -R $u "$i/$shader_backup"
         rm -rf "$i/$shader_dir"
         ln -s "$i/$shader_backup" "$i/$shader_dir"
@@ -40,9 +40,7 @@ do
     #d=$(echo $i | cut -d '/' -f2-3 | tr '/' '-')
     d=${i#?}
     mkdir -p "$shader_ram/$d"
-    rsync -a --delete "$i/$shader_backup/" "$shader_ram/$d/"
-    chown -R $u "$shader_ram/$d/*"
-    rm -f "$i/$shader_dir"
-    ln -s "$shader_ram/$d" "$i/$shader_dir"
+    rsync -a --delete "$i/$shader_backup/*" "$shader_ram/$d/"
+    chown -R $u "$shader_ram/$d"
 done
 unset $IFS

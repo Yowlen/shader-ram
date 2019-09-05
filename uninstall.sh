@@ -26,7 +26,7 @@ done < $script_dir/.variables
 
 # Stop the sync service and sync shader cache to the default
 # locations one last time
-systemctl stop ramdisk-sync.service
+systemctl stop shader-ram-boot.service
 sync
 
 # Perform uninstallation of each module
@@ -45,8 +45,13 @@ do
 done
 
 # Remove the sync service
-systemctl disable ramdisk-sync.service
-rm /lib/systemd/system/ramdisk-sync.service
+systemctl disable shader-ram-boot.service > /dev/null 2>&1
+rm /lib/systemd/system/shader-ram-boot.service > /dev/null 2>&1
+#systemctl disable shader-ram-psync.service > /dev/null 2>&1
+#rm /lib/systemd/system/shader-ram-psync.service > /dev/null 2>&1
+#systemctl disable shader-ram-psync.timer > /dev/null 2>&1
+#rm /lib/systemd/system/shader-ram-psync.timer > /dev/null 2>&1
+
 
 # Remove the shader cache files
 rm -rf $shader_modules

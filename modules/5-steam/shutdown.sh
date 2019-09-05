@@ -19,8 +19,6 @@ $script_dir/to-disk.sh
 
 # Restore Steam library links
 for i in `cat $shader_config/steamlibraries.config`; do
-for steam_folder in `cat $shader_config/steamlibraries.config`; do
-    rm -f "$steam_folder/$shader_dir"
-    ln -s "$steam_folder/$shader_backup" "$steam_folder/$shader_dir"
-done
+    rm "$i/$shader_dir"
+    ln -s "$i/$shader_backup" "$i/$shader_dir"
 done

@@ -40,6 +40,7 @@ chmod 755 /opt/shader-ram/*.sh
 
 # Perform installation of each module
 
+echo "Detecting and installing relevant modules."
 for m in $script_dir/modules/*
 do
     if [ -d $m ]
@@ -49,11 +50,19 @@ do
     fi
 done
 
-# Install the systemd sync service
-cp -f /opt/shader-ram/ramdisk-sync.service /lib/systemd/system/
-systemctl enable ramdisk-sync.service
+echo "Installing the systemd sync service."
+cp -f /opt/shader-ram/shader-ram-boot.service /lib/systemd/system/
+systemctl enable shader-ram-boot.service > /dev/null 2>&1
 # And start it up to perform the initial sync so that
 # it works without rebooting
-systemctl start ramdisk-sync.service
+systemctl start shader-ram-boot.service
+
+# And do the same with the periodic sync
+#cp -f /opt/shader-ram/shader-ram-psync.service /lib/systemd/system/
+#cp -f /opt/shader-ram/shader-ram-psync.timer /lib/systemd/system/
+#systemctl enable shader-ram-psync.service > /dev/null 2>&1
+#systemctl enable shader-ram-psync.timer > /dev/null 2>&1
+#systemctl start shader-ram-psync.service
+#systemctl start shader-ram-psync.timer
 
 rm $script_dir/.variables

@@ -79,3 +79,7 @@ awk '!a[$0]++' $shader_config/steamlibraries.config > $shader_config/steamlibrar
 rm $shader_config/steamlibraries.config
 mv $shader_config/steamlibraries.config.tmp $shader_config/steamlibraries.config
 unset $IFS
+
+# Failsafe just in case nothing's found for some reason
+# so that the rest of the script doesn't screw up.
+touch $shader_config/dxvkcaches.config

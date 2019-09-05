@@ -38,3 +38,7 @@ cat $shader_config/dxvkcaches1.config | sed '/ramdisk_backup/d' > $shader_config
 cat $shader_config/dxvkcaches2.config | sed '/Trash-1000/d' > $shader_config/dxvkcaches.config
 rm $shader_config/dxvkcaches1.config
 rm $shader_config/dxvkcaches2.config
+
+# Failsafe just in case nothing's found for some reason
+# so that the rest of the script doesn't screw up.
+touch $shader_config/dxvkcaches.config
