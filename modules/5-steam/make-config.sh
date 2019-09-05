@@ -82,4 +82,4 @@ unset $IFS
 
 # Failsafe just in case nothing's found for some reason
 # so that the rest of the script doesn't screw up.
-touch $shader_config/dxvkcaches.config
+touch $shader_config/steamlibraries.config
