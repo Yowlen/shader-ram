@@ -68,8 +68,12 @@ fi
 
 IFS=$'\n '
 # Now to do the actual search for all Steam libraries
-# and output them all to a file.
-echo $(find $(sed ':a;N;$!ba;s/\n/ \0/g' $shader_config/partitions.txt) -mindepth 2 -type d -name "*steamapps" ; ) > $shader_config/steamlibraries.txt
+# and output them all to a file
+if [[ $(command -v locate) ]];then
+    locate '*steamapps' > $shader_config/steamlibraries.txt
+else
+    echo $(find $(sed ':a;N;$!ba;s/\n/ \0/g' $shader_config/partitions.txt) -mindepth 2 -type d -name "*steamapps" ; ) > $shader_config/steamlibraries.txt
+fi
 rm $shader_config/partitions.txt
 # Then separate with new lines.
 cat $shader_config/steamlibraries.txt | sed 's/ \//\n\//g' >> $shader_config/steamlibraries.config
