@@ -28,9 +28,9 @@ cat /proc/mounts | grep 'ext4\|xfs\|btrfs' | grep -v ' / ' | cut -d ' ' -f2 | se
 echo /home/$u >> $shader_config/partitions.txt
 
 # Now to do the actual search for all DXVK caches
-# and output them all to a file.
+# and outp -e ut them all.
 if [[ $(command -v locate) ]];then
-	locate .dxvk-cache > $shader_config/dxvkcaches.txt
+	locate -e .dxvk-cache > $shader_config/dxvkcaches.txt
 else
 	echo $(ionice -c 3 find $(sed ':a;N;$!ba;s/\n/ \0/g' $shader_config/partitions.txt) -mindepth 3 -type f,l -name "*.dxvk-cache" ; ) > $shader_config/dxvkcaches.txt
 fi
