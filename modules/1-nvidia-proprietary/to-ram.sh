@@ -20,7 +20,7 @@ rm $script_dir/.variables
 if [ ! -L $shader_dir ]
 then
     mkdir -p "$shader_backup"
-    rsync -a --delete "$shader_dir/*" "$shader_backup/"
+    rsync -a --delete "$shader_dir/" "$shader_backup/"
     chown -R $u "$shader_backup"
     rm -r "$shader_dir"
     ln -s "$shader_backup" "$shader_dir"

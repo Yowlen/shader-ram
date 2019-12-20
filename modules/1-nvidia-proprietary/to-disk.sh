@@ -17,5 +17,5 @@ rm $script_dir/.variables
 
 # Back up the cache to disk
 mkdir -p "$shader_backup"
-rsync -a --delete "$shader_ram/*" "$shader_backup/"
+rsync -a --delete "$shader_ram/" "$shader_backup/"
 chown -R $u "$shader_backup"
