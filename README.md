@@ -1,5 +1,7 @@
 # Shader-RAM
 
+**Important note:** This repo is outdated. The new repo is found at: https://codeberg.org/Yowlen/shader-ram
+
 This will install a RAM disk for use with shader caches for increased performance in games. The tradeoff is that it can increase boot times significantly depending on the size of the shader caches and filesystem.
 
 Currently supports the following shader caches:
